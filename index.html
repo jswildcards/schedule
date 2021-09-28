@@ -17,8 +17,9 @@
     <div class="flex mt-4 justify-center">
       <v-calendar @dayclick="selectDate" :first-day-of-week="1" :attributes="attrs"></v-calendar>
     </div>
-    <div class="mx-auto max-w-xl flex mt-4 justify-center flex-col">
-      <div v-for="course in show" :class="'px-4 py-2 flex border-l-4 border-' + course.color + '-500'">
+    <div class="mx-auto max-w-lg flex mt-4 justify-center flex-col">
+      <div v-if="courses?.length === 0" class="text-center">No Data</div>
+      <div v-for="course in courses" :class="'px-4 py-2 flex border-l-4 border-' + course.color + '-500'">
         <div class="pr-2">
           {{ `${course.time.start} - ${course.time.end}` }}
         </div>
