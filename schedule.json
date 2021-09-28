@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "color": "red",
     "title": "中華基督教會馮梁結紀念中學",
     "school": "中華基督教會馮梁結紀念中學",
     "company": "Winstars",
@@ -19,6 +20,7 @@
   },
   {
     "id": 2,
+    "color": "blue",
     "title": "迦密唐賓南紀念中學",
     "school": "迦密唐賓南紀念中學",
     "company": "Winstars",
@@ -38,6 +40,7 @@
   },
   {
     "id": 3,
+    "color": "orange",
     "title": "地利亞修女紀念學校(協和)",
     "school": "地利亞修女紀念學校(協和)",
     "company": "Winstars",
@@ -64,6 +67,7 @@
   },
   {
     "id": 4,
+    "color": "brown",
     "title": "基督教女青年會丘佐榮中學",
     "school": "基督教女青年會丘佐榮中學",
     "company": "Winstars",
@@ -83,6 +87,7 @@
   },
   {
     "id": 5,
+    "color": "pink",
     "title": "Arduino智能產品編程班",
     "school": "荔枝角天主教小學(九龍深水埗興華街西六號)",
     "company": "Coding101",
