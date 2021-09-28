@@ -15,7 +15,8 @@
 <body>
   <div id="app" class="container my-md-4">
     <div class="d-flex justify-content-center">
-      <v-calendar :first-day-of-week="1" :attributes="attrs"></v-calendar>
+      <v-calendar @dayclick="selectDate" :first-day-of-week="1" :attributes="attrs"></v-calendar>
+      <div>{{ show }}</div>
     </div>
   </div>
 
