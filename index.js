@@ -32,10 +32,10 @@ new Vue({
 
     this.attrs = [
       ...this.attrs,
-      {
-        dot: true,
-        dates: Object.keys(this.schedule).map((el) => new Date(el)),
-      },
+      ...this.courses.map((course) => ({
+        dot: course.color,
+        dates: course.dates.map((date) => new Date(date)),
+      })),
     ];
   },
   methods: {
