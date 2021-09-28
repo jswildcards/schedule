@@ -9,16 +9,17 @@ new Vue({
           dates: new Date(),
         },
       ],
+      courses: [],
       schedule: {},
       show: [],
     };
   },
   mounted: async function () {
-    const schedule = await fetch(
+    this.courses = await fetch(
       "https://raw.githubusercontent.com/jswildcards/schedule/main/schedule.json"
     ).then((res) => res.json());
 
-    this.schedule = schedule.reduce((prev, cur) => {
+    this.schedule = this.courses.reduce((prev, cur) => {
       cur.dates.forEach((date) => {
         prev = {
           ...prev,
@@ -29,11 +30,19 @@ new Vue({
       return prev;
     }, {});
 
-    console.log(Object.keys(this.schedule).length);
+    this.attrs = [
+      ...this.attrs,
+      {
+        dot: true,
+        dates: Object.keys(this.schedule).map((el) => new Date(el)),
+      },
+    ];
   },
   methods: {
     selectDate: function (e) {
-      this.show = schedule[e.id] ?? [];
+      this.show = (this.schedule[e.id] ?? [])
+        .map((el) => this.courses.find(({ id }) => el == id))
+        .sort((a, b) => (a.time.start > b.time.start ? 1 : -1));
     },
   },
 });
