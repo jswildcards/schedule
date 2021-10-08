@@ -12,15 +12,14 @@ new Vue({
       courses: [],
       schedule: {},
       allCourses: [],
+      url: "https://raw.githubusercontent.com/jswildcards/schedule/main/data.json",
     };
   },
   mounted: async function () {
-    this.allCourses = await fetch(
-      "https://raw.githubusercontent.com/jswildcards/schedule/main/schedule.json"
-    )
+    this.allCourses = await fetch(url)
       .then((res) => res.json())
       .then((res) =>
-        res.sort((a, b) => (a.time.start > b.time.start ? 1 : -1))
+        res.schedule.sort((a, b) => (a.time.start > b.time.start ? 1 : -1))
       );
 
     this.schedule = this.allCourses.reduce((prev, cur) => {
