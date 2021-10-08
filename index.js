@@ -16,7 +16,7 @@ new Vue({
     };
   },
   mounted: async function () {
-    this.allCourses = await fetch(url)
+    this.allCourses = await fetch(this.url)
       .then((res) => res.json())
       .then((res) =>
         res.schedule.sort((a, b) => (a.time.start > b.time.start ? 1 : -1))
