@@ -2,13 +2,7 @@ new Vue({
   el: "#app",
   data: function () {
     return {
-      attrs: [
-        {
-          key: "today",
-          highlight: true,
-          dates: new Date(),
-        },
-      ],
+      attrs: [],
       courses: [],
       schedule: {},
       allCourses: [],
@@ -16,6 +10,10 @@ new Vue({
     };
   },
   mounted: async function () {
+    const dateFormatter = Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Hong_Kong',
+    })
+
     this.allCourses = await fetch(this.url)
       .then((res) => res.json())
       .then((res) =>
@@ -34,10 +32,14 @@ new Vue({
     }, {});
 
     this.attrs = [
-      ...this.attrs,
+      {
+        key: "today",
+        highlight: true,
+        dates: dateFormatter.format(new Date()),
+      },
       ...this.allCourses.map((course) => ({
         dot: course.color,
-        dates: course.dates.map((date) => new Date(date)),
+        dates: course.dates.map((date) => dateFormatter.format(new Date(date))),
       })),
     ];
   },
